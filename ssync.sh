@@ -1,5 +1,4 @@
 #!/bin/bash
-
 trap exit INT TERM EXIT
 
 MAX_NUM_ARGS=1
@@ -19,7 +18,7 @@ clone () { rsync -azC --inplace --exclude "scripts/" --exclude="test/" --exclude
 #nothing needs to be packaged right now...
 
 #============================== TRANSFER FILES ===============================#
-DIR=$(pwd)/$(dirname $0) # Folder containing this script
+DIR=$(dirname $(readlink -f $0)) # Folder containing this script
 if [ -z $1 ]  # If [clientIP] is given, use it instead of ips.sh
 then
     source ${DIR}/ips.sh
@@ -30,8 +29,6 @@ fi
 # All files in FILES variable should have absolute paths
 ROOT=/home/$USER
 FILES="$ROOT/git $ROOT/svn $ROOT/.bashrc $ROOT/bwc-ros.sh $ROOT/.screenrc"
-
-USER=$(whoami)
 
 for IP in ${IP_LIST[@]}
 do
