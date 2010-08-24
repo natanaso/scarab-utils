@@ -1,0 +1,5 @@
+ips.sh:
+  Contains a list of IP addresses that other scripts can source.
+
+ssync.sh:
+  "Scarab sync"; copy files from current machine to other machines.
