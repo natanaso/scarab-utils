@@ -32,7 +32,7 @@ FILES="$HOME/git $HOME/svn $HOME/.bashrc $HOME/.screenrc"
 for IP in ${IP_LIST[@]}
 do
     echo Pushing files to $IP
-    rsync -avz --inplace $FILES $USER@$IP:/home/$USER
+    rsync -avzC --inplace $FILES $USER@$IP:/home/$USER
     ssh  $USER@$IP "chown -R $USER:mrsl /home/$USER/"
     echo "done!"
 done
