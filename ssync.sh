@@ -27,8 +27,7 @@ else
 fi
 
 # All files in FILES variable should have absolute paths
-ROOT=/home/$USER
-FILES="$ROOT/git $ROOT/svn $ROOT/.bashrc $ROOT/bwc-ros.sh $ROOT/.screenrc"
+FILES="$HOME/git $HOME/svn $HOME/.bashrc $HOME/.screenrc"
 
 for IP in ${IP_LIST[@]}
 do
