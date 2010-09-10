@@ -13,7 +13,7 @@ fi
 #=============================== PACKAGE CODE ================================#
 # Copy from one place to the next excluding .svn files, any folder called test
 # or scripts, and python byte code
-clone () { rsync -azC --inplace --exclude "scripts/" --exclude="test/" --exclude="*.pyc" $1 $2; }
+clone () { rsync -azC --exclude "scripts/" --exclude="test/" --exclude="*.pyc" $1 $2; }
 
 #nothing needs to be packaged right now...
 
@@ -32,7 +32,7 @@ FILES="$HOME/git $HOME/svn $HOME/.bashrc $HOME/.screenrc"
 for IP in ${IP_LIST[@]}
 do
     echo Pushing files to $IP
-    rsync -avzC --inplace $FILES $USER@$IP:/home/$USER
+    rsync -avz --exclude=".git" --inplace $FILES $USER@$IP:/home/$USER
     ssh  $USER@$IP "chown -R $USER:mrsl /home/$USER/"
     echo "done!"
 done
