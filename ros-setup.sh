@@ -1,4 +1,11 @@
-source /opt/ros/setup.sh
+if [ -e /opt/ros/cturtle/setup.bash ]; then
+    source /opt/ros/cturtle/setup.bash
+elif [ -e /opt/ros/cturtle/setup.sh ]; then
+    source /opt/ros/cturtle/setup.sh
+else
+    echo "Problem finding ros setup file"
+fi
+
 # List all folders found in $HOME/git & $HOME/svn
 PACKAGES=`find $HOME/git $HOME/svn -maxdepth 1 -mindepth 1 | sed 's/$/:/' | tr -d '\n'`
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:${PACKAGES}
